@@ -1,124 +1,215 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Eskinder's Portfolio</title>
-    <!-- Basic styling for the portfolio -->
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <!-- Navigation bar -->
-    <header class="navbar">
-      <h1 class="brand">Eskinder</h1>
-      <nav class="nav-links">
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eskinder — Cloud • Security • AI</title>
+  <meta name="description" content="Eskinder Kassahun — cloud engineer, security geek, and AI explorer. Projects, skills, and contact." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-    <!-- Hero section -->
-    <section id="hero" class="hero">
-      <div class="hero-content">
-        <h2>👾 Welcome to My Tech Universe</h2>
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Primary">
+      <a class="brand" href="#home" aria-label="Home">Eskinder</a>
+      <button class="nav-toggle" aria-controls="nav-menu" aria-expanded="false" aria-label="Menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+      <ul id="nav-menu" class="nav-menu">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#projects">Projects</a></li>
+        <li><a class="nav-link" href="#skills">Skills</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section id="home" class="section hero">
+      <div class="container hero-inner">
+        <p class="eyebrow">👾 Welcome to My Tech Universe</p>
+        <h1 class="headline glow">
+          I’m <span class="accent">Eskinder</span> — part cloud engineer, part security geek, part AI explorer.
+        </h1>
+        <p class="lead">
+          I design <span class="accent-underline">secure AWS pipelines</span>, hack on <span class="accent-underline">generative &amp; agent AI</span>,
+          and turn bold ideas into working code. This is my <strong>player’s hub</strong> — pick a project and hit <em>start</em>.
+        </p>
+        <div class="cta">
+          <!-- TODO: swap with your real resume link -->
+          <a class="btn" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">📄 View My Resume</a>
+          <a class="btn ghost" href="#projects">View Projects</a>
+        </div>
+
+        <div class="typewriter" aria-live="polite">
+          <span id="typewriter-text" data-lines='[
+            "Initializing…",
+            "Provisioning VPC, subnets, and IAM…",
+            "Deploying Lambdas…",
+            "Securing endpoints…",
+            "Load complete. Ready to explore!"
+          ]'></span>
+        </div>
+      </div>
+      <a class="scroll-down" href="#about" aria-label="Scroll to About">▼</a>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="container grid-2 reveal">
+        <div>
+          <h2 class="section-title">About Me</h2>
           <p>
-            I’m Eskinder — part cloud engineer, part security geek, part AI explorer. 
+            I’m a technologist focused on <b>cloud computing</b>, <b>security</b>, and <b>AI</b>. I build AWS solutions that scale,
+            stay secure, and keep costs in check. I like automation, clean configs, and readable code.
           </p>
           <p>
-              I design <b>secure AWS pipelines</b>, hack on <b>generative AI</b>, 
-              and love turning bold ideas into working code. 
+            Recently I’ve been experimenting with <b>OpenAI</b> prompts &amp; agents, exploring how cloud + security + AI
+            combine to create smarter, safer systems.
           </p>
-          <p>
-              Think of this portfolio as my <b>player’s hub</b> — choose a project below 
-               and hit “start.” 🎮
-          </p>
-          <a href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" 
-       class="resume-btn" target="_blank">
-      📄 View My Resume
-    </a>
+          <div class="chips">
+            <span class="chip">AWS</span>
+            <span class="chip">Serverless</span>
+            <span class="chip">Security</span>
+            <span class="chip">Agents</span>
+            <span class="chip">TypeScript</span>
+            <span class="chip">Python</span>
+          </div>
+        </div>
+        <div class="about-card">
+          <ul class="about-list">
+            <li><span>Location:</span> Atlanta, GA</li>
+            <li><span>Focus:</span> Cloud • DevOps • Security • AI</li>
+            <li><span>Now:</span> Building demos & improving IaC skills</li>
+            <li><span>Interests:</span> Monitoring, cost control, DX, teaching</li>
+          </ul>
+        </div>
       </div>
     </section>
 
-    <!-- About section -->
-    <section id="about" class="section">
-      <h2>About Me</h2>
-      <p>
-  I’m a passionate technologist with a strong focus on <b>cloud computing</b>,
-  <b>security</b>, and more recently <b>AI</b>. Over the past few years, I’ve
-  built and deployed AWS solutions that don’t just scale but also stay secure
-  and cost-effective. I enjoy designing systems that balance performance with
-  protection, making sure applications are reliable and safe for users.
-</p>
-<p>
-  Security isn’t just a feature to me—it’s part of the way I think about
-  technology. From enforcing least-privilege IAM roles to automating monitoring
-  and alerts, I like solving problems where cloud innovation meets smart
-  security practices. My goal is to help teams move quickly without cutting
-  corners on safety.
-</p>
-<p>
-  I’m also diving deeper into the world of <b>AI</b>, especially
-  <b>generative and agent AI</b>. I’ve been experimenting with OpenAI prompts
-  and tools, exploring how these technologies can be combined with cloud and
-  security to create smarter, more adaptive systems. I believe the future of
-  cloud isn’t just scalable—it’s intelligent and secure.
-</p>
-<p>
-  Outside of projects, I’m always exploring new tools and ideas—whether it’s
-  testing emerging AWS services, reading about the latest in cybersecurity,
-  or experimenting with AI agents. I enjoy sharing what I learn and connecting
-  with others who are excited about building safer, more intelligent, and
-  innovative systems in the cloud.
-</p>
-    </section>
-
-    <!-- Projects section -->
+    <!-- PROJECTS -->
     <section id="projects" class="section">
-      <h2>Projects</h2>
-      <div id="projects-container" class="card-grid"></div>
+      <div class="container">
+        <h2 class="section-title">Projects</h2>
+
+        <div class="projects-grid">
+          <article class="card reveal">
+            <h3>JohnnyCloud</h3>
+            <p>Intelligent file processing on AWS: S3 → EventBridge → Lambda → DynamoDB → SNS. Normalizes results, persists state, and notifies. IAM + CloudWatch for observability.</p>
+            <div class="chips">
+              <span class="chip">AWS</span><span class="chip">Lambda</span><span class="chip">S3</span>
+              <span class="chip">EventBridge</span><span class="chip">DynamoDB</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn sm" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn ghost sm" href="#" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <h3>Neon Meme Machine</h3>
+            <p>React + JS meme generator that pulls templates from APIs, adds text, and lets users download/share. Deployed on Netlify.</p>
+            <div class="chips">
+              <span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">API</span><span class="chip">Netlify</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn sm" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn ghost sm" href="#" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+
+          <article class="card reveal">
+            <h3>Trivia Clash</h3>
+            <p>Jeopardy-style trivia with React + Node. Features: timers, validation, scoring, and player stats. Built to expand with new categories.</p>
+            <div class="chips">
+              <span class="chip">React</span><span class="chip">Node</span><span class="chip">JavaScript</span><span class="chip">Game</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn sm" href="#" target="_blank" rel="noopener">Live</a>
+              <a class="btn ghost sm" href="#" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
 
-    <!-- Skills section -->
+    <!-- SKILLS -->
     <section id="skills" class="section">
-      <h2>Skills</h2>
-      <ul id="skills-list" class="skills-list"></ul>
+      <div class="container reveal">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+          <div class="skill-box">
+            <h3>Cloud &amp; DevOps</h3>
+            <div class="chips">
+              <span class="chip">AWS</span><span class="chip">Serverless</span><span class="chip">Terraform</span>
+              <span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Linux</span>
+            </div>
+          </div>
+          <div class="skill-box">
+            <h3>Programming</h3>
+            <div class="chips">
+              <span class="chip">TypeScript</span><span class="chip">JavaScript</span>
+              <span class="chip">Python</span><span class="chip">Java</span>
+            </div>
+          </div>
+          <div class="skill-box">
+            <h3>Security &amp; AI</h3>
+            <div class="chips">
+              <span class="chip">IAM</span><span class="chip">RBAC</span><span class="chip">OpenAI</span>
+              <span class="chip">RAG</span><span class="chip">Agents</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Contact section -->
+    <!-- CONTACT -->
     <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>
-        If you’d like to discuss a project or just say hello, feel free to
-        reach out via email or connect with me on GitHub.
-      </p>
-      <ul class="contact-links">
-        <li>
-          Email:
-          <a href="eskewabe185@gmail.com">eskewabe185@gmail.com</a>
-        </li>
-       <li>
-    Resume: 
-    <a href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" target="_blank">
-      View / Download
-    </a>
-  </li>
-        <li>
-          GitHub:
-          <a href="https://github.com/Eskinder185" target="_blank"
-            >Eskinder185</a
-          >
-        </li>
-      </ul>
+      <div class="container grid-2 reveal">
+        <div>
+          <h2 class="section-title">Contact</h2>
+          <p>If you’d like to discuss a project or just say hello, reach out via email or GitHub.</p>
+          <p class="contact-links">
+            <a class="btn sm" href="mailto:eskewabe185@gmail.com">Email Me</a>
+            <a class="btn ghost sm" href="https://github.com/Eskinder185" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn ghost sm" href="https://www.linkedin.com/in/eskinder-kassahun" target="_blank" rel="noopener">LinkedIn</a>
+          </p>
+          <p class="muted">Resume: <a href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">View</a> / <a href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Download</a></p>
+        </div>
+
+        <!-- If you don’t want a form, remove this block -->
+        <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" required />
+          </label>
+          <label>
+            <span>Email</span>
+            <input type="email" name="email" required />
+          </label>
+          <label>
+            <span>Message</span>
+            <textarea name="message" rows="4" required></textarea>
+          </label>
+          <button class="btn" type="submit">Send</button>
+          <p class="muted tiny">Uses Formspree — replace action URL with your own endpoint.</p>
+        </form>
+      </div>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-      <p>&copy; 2025 Eskinder · Built with TypeScript</p>
-    </footer>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>© <span id="year"></span> Eskinder — Built with HTML, CSS, and JS</p>
+      <a class="to-top" href="#top" aria-label="Back to top">▲</a>
+    </div>
+  </footer>
 
-    <!-- Application script compiled from TypeScript -->
-    <script src="main.js"></script>
-  </body>
+  <script src="main.js"></script>
+</body>
 </html>
