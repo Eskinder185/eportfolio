@@ -12,6 +12,9 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
+  <!-- scroll progress -->
+  <div id="progress"></div>
+
   <header class="site-header" id="top">
     <nav class="nav container" aria-label="Primary">
       <a class="brand" href="#home" aria-label="Home">Eskinder</a>
@@ -31,6 +34,9 @@
   <main id="main">
     <!-- HERO -->
     <section id="home" class="section hero">
+      <!-- animated background -->
+      <canvas id="bg-stars" class="bg-canvas" aria-hidden="true"></canvas>
+
       <div class="container hero-inner">
         <p class="eyebrow">👾 Welcome to My Tech Universe</p>
         <h1 class="headline glow">
@@ -41,8 +47,7 @@
           and turn bold ideas into working code. This is my <strong>player’s hub</strong> — pick a project and hit <em>start</em>.
         </p>
         <div class="cta">
-          <!-- TODO: swap with your real resume link -->
-          <a class="btn" href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">📄 View My Resume</a>
+          <a class="btn" href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" target="_blank" rel="noopener">📄 View My Resume</a>
           <a class="btn ghost" href="#projects">View Projects</a>
         </div>
 
@@ -63,7 +68,7 @@
     <section id="about" class="section">
       <div class="container grid-2 reveal">
         <div>
-          <h2 class="section-title">About Me</h2>
+          <h2 class="section-title pulse">About Me</h2>
           <p>
             I’m a technologist focused on <b>cloud computing</b>, <b>security</b>, and <b>AI</b>. I build AWS solutions that scale,
             stay secure, and keep costs in check. I like automation, clean configs, and readable code.
@@ -95,43 +100,42 @@
     <!-- PROJECTS -->
     <section id="projects" class="section">
       <div class="container">
-        <h2 class="section-title">Projects</h2>
+        <h2 class="section-title pulse">Projects</h2>
 
         <div class="projects-grid">
-          <article class="card reveal">
-            <h3>JohnnyCloud</h3>
-            <p>Intelligent file processing on AWS: S3 → EventBridge → Lambda → DynamoDB → SNS. Normalizes results, persists state, and notifies. IAM + CloudWatch for observability.</p>
-            <div class="chips">
-              <span class="chip">AWS</span><span class="chip">Lambda</span><span class="chip">S3</span>
-              <span class="chip">EventBridge</span><span class="chip">DynamoDB</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn sm" href="#" target="_blank" rel="noopener">Live</a>
-              <a class="btn ghost sm" href="#" target="_blank" rel="noopener">Source</a>
-            </div>
-          </article>
-
-          <article class="card reveal">
+          <!-- Neon Meme Machine -->
+          <article class="card tilt reveal">
             <h3>Neon Meme Machine</h3>
-            <p>React + JS meme generator that pulls templates from APIs, adds text, and lets users download/share. Deployed on Netlify.</p>
+            <p>React + JS meme generator that pulls templates from APIs, adds text, and lets users download/share. Deployed-ready on Netlify/GitHub Pages.</p>
             <div class="chips">
-              <span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">API</span><span class="chip">Netlify</span>
+              <span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">API</span>
             </div>
             <div class="card-actions">
-              <a class="btn sm" href="#" target="_blank" rel="noopener">Live</a>
-              <a class="btn ghost sm" href="#" target="_blank" rel="noopener">Source</a>
+              <a class="btn ghost sm shine" href="https://github.com/Eskinder185/neon-meme-machine" target="_blank" rel="noopener">Source</a>
             </div>
           </article>
 
-          <article class="card reveal">
-            <h3>Trivia Clash</h3>
-            <p>Jeopardy-style trivia with React + Node. Features: timers, validation, scoring, and player stats. Built to expand with new categories.</p>
+          <!-- Task Tracker -->
+          <article class="card tilt reveal">
+            <h3>Task Tracker</h3>
+            <p>Simple, fast task tracker that demonstrates CRUD, clean component state, and local persistence. Great for showcasing JS fundamentals and UX polish.</p>
             <div class="chips">
-              <span class="chip">React</span><span class="chip">Node</span><span class="chip">JavaScript</span><span class="chip">Game</span>
+              <span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span>
             </div>
             <div class="card-actions">
-              <a class="btn sm" href="#" target="_blank" rel="noopener">Live</a>
-              <a class="btn ghost sm" href="#" target="_blank" rel="noopener">Source</a>
+              <a class="btn ghost sm shine" href="https://github.com/Eskinder185/tasktracker" target="_blank" rel="noopener">Source</a>
+            </div>
+          </article>
+
+          <!-- Jeopardy / Trivia Game -->
+          <article class="card tilt reveal">
+            <h3>Jeopardy Trivia Game</h3>
+            <p>Jeopardy-style trivia app with timer, scoring, and answer validation. Designed to add categories and expand game modes.</p>
+            <div class="chips">
+              <span class="chip">JavaScript</span><span class="chip">Game</span>
+            </div>
+            <div class="card-actions">
+              <a class="btn ghost sm shine" href="https://github.com/Eskinder185/jeopardy-trivia-game" target="_blank" rel="noopener">Source</a>
             </div>
           </article>
         </div>
@@ -141,23 +145,23 @@
     <!-- SKILLS -->
     <section id="skills" class="section">
       <div class="container reveal">
-        <h2 class="section-title">Skills</h2>
+        <h2 class="section-title pulse">Skills</h2>
         <div class="skills-grid">
-          <div class="skill-box">
+          <div class="skill-box hover-border">
             <h3>Cloud &amp; DevOps</h3>
             <div class="chips">
               <span class="chip">AWS</span><span class="chip">Serverless</span><span class="chip">Terraform</span>
               <span class="chip">CI/CD</span><span class="chip">Docker</span><span class="chip">Linux</span>
             </div>
           </div>
-          <div class="skill-box">
+          <div class="skill-box hover-border">
             <h3>Programming</h3>
             <div class="chips">
               <span class="chip">TypeScript</span><span class="chip">JavaScript</span>
               <span class="chip">Python</span><span class="chip">Java</span>
             </div>
           </div>
-          <div class="skill-box">
+          <div class="skill-box hover-border">
             <h3>Security &amp; AI</h3>
             <div class="chips">
               <span class="chip">IAM</span><span class="chip">RBAC</span><span class="chip">OpenAI</span>
@@ -172,17 +176,16 @@
     <section id="contact" class="section">
       <div class="container grid-2 reveal">
         <div>
-          <h2 class="section-title">Contact</h2>
+          <h2 class="section-title pulse">Contact</h2>
           <p>If you’d like to discuss a project or just say hello, reach out via email or GitHub.</p>
           <p class="contact-links">
-            <a class="btn sm" href="mailto:eskewabe185@gmail.com">Email Me</a>
+            <a class="btn sm shine" href="mailto:eskewabe185@gmail.com">Email Me</a>
             <a class="btn ghost sm" href="https://github.com/Eskinder185" target="_blank" rel="noopener">GitHub</a>
-            <a class="btn ghost sm" href="https://www.linkedin.com/in/eskinder-kassahun" target="_blank" rel="noopener">LinkedIn</a>
+            <a class="btn ghost sm" href="https://www.linkedin.com/in/eskinder-kassahun/" target="_blank" rel="noopener">LinkedIn</a>
           </p>
-          <p class="muted">Resume: <a href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">View</a> / <a href="YOUR_RESUME_LINK.pdf" target="_blank" rel="noopener">Download</a></p>
+          <p class="muted">Resume: <a href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" target="_blank" rel="noopener">View</a> / <a href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" target="_blank" rel="noopener">Download</a></p>
         </div>
 
-        <!-- If you don’t want a form, remove this block -->
         <form class="contact-form" action="https://formspree.io/f/your-id" method="POST">
           <label>
             <span>Name</span>
@@ -196,7 +199,7 @@
             <span>Message</span>
             <textarea name="message" rows="4" required></textarea>
           </label>
-          <button class="btn" type="submit">Send</button>
+          <button class="btn shine" type="submit">Send</button>
           <p class="muted tiny">Uses Formspree — replace action URL with your own endpoint.</p>
         </form>
       </div>
@@ -213,3 +216,4 @@
   <script src="main.js"></script>
 </body>
 </html>
+
