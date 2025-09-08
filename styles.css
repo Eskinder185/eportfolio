@@ -54,9 +54,23 @@ body{
 .nav-toggle .bar{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;border-radius:2px}
 
 /* -------------------- HERO -------------------- */
-.hero{position:relative;padding:6.5rem 0 5rem;overflow:hidden}
-.bg-canvas{position:absolute;inset:0;z-index:0;width:100%;height:100%}
-.hero-inner{position:relative;z-index:1}
+.hero{
+  position:relative;
+  padding:6.5rem 0 5rem;
+  overflow:hidden;
+  min-height:520px;             /* ensure visible area for the canvas */
+}
+
+.bg-canvas{
+  position:absolute;
+  inset:0;
+  z-index:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;          /* let clicks go to buttons/links */
+}
+
+.hero-inner{ position:relative; z-index:1; }
 
 /* animated headline + copy */
 .eyebrow{color:var(--accent-2);letter-spacing:.12em;font-weight:600;text-transform:uppercase;margin:0 0 .7rem}
@@ -127,14 +141,37 @@ body{
 
 /* About card */
 .about-card{
-  background:var(--panel);border:1px solid rgba(57,255,20,.15);
-  border-radius:var(--radius);padding:1rem 1.2rem;box-shadow:var(--shadow)
+  background:var(--panel);
+  border:1px solid rgba(57,255,20,.15);
+  border-radius:var(--radius);
+  padding:1rem 1.2rem;
+  box-shadow:var(--shadow);
 }
-.about-list{list-style:none;margin:0;padding:0}
-.about-list li{padding:.4rem 0;border-bottom:1px dashed rgba(255,255,255,.08)}
-.about-list li:last-child{border-bottom:0}
-.about-list span{display:inline-block;width:110px;color:var(--muted)}
 
+.about-list{list-style:none;margin:0;padding:0}
+
+/* one row = label + value */
+.about-list li{
+  display:flex;
+  align-items:flex-start;
+  gap:.5rem;                /* space between label and value */
+  padding:.5rem 0;
+  border-bottom:1px dashed rgba(255,255,255,.08);
+}
+.about-list li:last-child{border-bottom:0}
+
+/* label (first span) — no fixed width */
+.about-list li > span{
+  color:var(--muted);
+  margin-right:.25rem;
+  white-space:nowrap;       /* keep "Location:" on one line */
+  width:auto !important;    /* nuke any previous width */
+}
+
+/* stack on very small screens */
+@media (max-width:560px){
+  .about-list li{flex-direction:column; gap:.35rem;}
+}
 /* Buttons / chips */
 .btn{
   --py:.7rem;--px:1rem;
@@ -251,12 +288,15 @@ body{
   0%{transform:translateX(-120%) rotate(8deg)}
   100%{transform:translateX(120%) rotate(8deg)}
 }
-.bg-canvas{
-  position:absolute;
-  inset:0;
-  z-index:0;
-  width:100%;
-  height:100%;
-  pointer-events:none; /* important */
+/* Global animated background */
+#cyber-bg{
+  position: fixed;
+  inset: 0;               /* top:0; right:0; bottom:0; left:0 */
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;             /* content sits above it */
+  pointer-events: none;   /* allow clicks through */
 }
-.hero .container{ position:relative; z-index:1; }
+
+/* Ensure sections render above the canvas */
+.site-header, main, .site-footer { position: relative; z-index: 1; }

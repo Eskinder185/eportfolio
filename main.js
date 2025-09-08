@@ -95,90 +95,80 @@ if (!prefersReduced){
   });
 }
 
+// ==== Cyber Neon Background (global, full-page) ====
 (function cyberBackground(){
-const canvas = document.getElementById("bg-stars");
-if (!canvas) { console.warn("[cyber-bg] #bg-stars not found"); return; }
+  const canvas = document.getElementById("cyber-bg");
+  if (!canvas) { console.warn("[cyber-bg] canvas not found"); return; }
 
-// TEMP: ignore reduced-motion so you can verify it works.
-// Set HONOR_REDUCED_MOTION = true later if you want to respect the setting.
-const HONOR_REDUCED_MOTION = false;
-const prefersReduced =
-  window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-if (HONOR_REDUCED_MOTION && prefersReduced) {
-  console.log("[cyber-bg] reduced-motion on — animation skipped");
-  return;
-}
-console.log("[cyber-bg] running");
+  // Set this to true later if you want to honor OS reduced-motion.
+  const HONOR_REDUCED_MOTION = false;
+  const prefersReduced = window.matchMedia &&
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (HONOR_REDUCED_MOTION && prefersReduced) {
+    console.log("[cyber-bg] reduced-motion on — skipped");
+    return;
+  }
 
   const ctx = canvas.getContext("2d");
-  let w, h, DPR, particles = [], t = 0;
+  if (!ctx) { console.warn("[cyber-bg] 2D context unavailable"); return; }
 
-  function resize(){
-    DPR = Math.min(window.devicePixelRatio || 1, 2);
+  let w = 1, h = 1, DPR = Math.min(window.devicePixelRatio || 1, 2);
+  let particles = [], t = 0;
 
-    // Size the canvas to match the hero area precisely
-    const hero = document.querySelector(".hero");
-    const rect = hero
-      ? hero.getBoundingClientRect()
-      : { width: innerWidth, height: innerHeight * 0.65 };
-
-    w = Math.floor(rect.width * DPR);
-    h = Math.floor(rect.height * DPR);
-
-    canvas.width = w;
-    canvas.height = h;
-    canvas.style.width = rect.width + "px";
-    canvas.style.height = rect.height + "px";
-
-    // Rebuild particle field based on area
-    const count = Math.floor((w * h) / 55000);
+  function rebuildParticles(){
+    const count = Math.floor((w * h) / 55000); // density
     particles = Array.from({ length: count }, () => ({
       x: Math.random() * w,
       y: Math.random() * h,
-      vx: (Math.random() * 0.6 + 0.2) * DPR,      // drift right
-      vy: (Math.random() * 0.10 - 0.05) * DPR,    // slight vertical wobble
-      l: Math.random() * 20 + 10,                 // streak length
-      a: Math.random() * Math.PI * 2              // phase for twinkle
+      vx: (Math.random() * 0.6 + 0.2) * DPR,
+      vy: (Math.random() * 0.10 - 0.05) * DPR,
+      l: Math.random() * 20 + 10,
+      a: Math.random() * Math.PI * 2
     }));
   }
-// ==== Cyber Neon Background
-  function drawBackground(){
-    // base fill
-    ctx.fillStyle = "#0b0f12";
-    ctx.fillRect(0, 0, w, h);
 
-    // two aurora-like radial glows
-    const g1 = ctx.createRadialGradient(w * 0.2, h * 0.12, 0, w * 0.2, h * 0.12, h * 0.9);
+  function resize(){
+    DPR = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.floor(window.innerWidth  * DPR));
+    h = Math.max(1, Math.floor(window.innerHeight * DPR));
+    canvas.width = w; canvas.height = h;
+    canvas.style.width  = window.innerWidth  + "px";
+    canvas.style.height = window.innerHeight + "px";
+    rebuildParticles();
+  }
+
+  function drawBackground(){
+    ctx.fillStyle = "#0b0f12";
+    ctx.fillRect(0,0,w,h);
+
+    const g1 = ctx.createRadialGradient(w*0.2, h*0.12, 0, w*0.2, h*0.12, h*0.9);
     g1.addColorStop(0, "rgba(0,229,255,0.14)");
     g1.addColorStop(1, "rgba(0,0,0,0)");
-
-    const g2 = ctx.createRadialGradient(w * 0.9, h * 0.95, 0, w * 0.9, h * 0.95, h * 1.2);
+    const g2 = ctx.createRadialGradient(w*0.9, h*0.95, 0, w*0.9, h*0.95, h*1.2);
     g2.addColorStop(0, "rgba(57,255,20,0.12)");
     g2.addColorStop(1, "rgba(0,0,0,0)");
 
     ctx.globalCompositeOperation = "lighter";
-    ctx.fillStyle = g1; ctx.fillRect(0, 0, w, h);
-    ctx.fillStyle = g2; ctx.fillRect(0, 0, w, h);
+    ctx.fillStyle = g1; ctx.fillRect(0,0,w,h);
+    ctx.fillStyle = g2; ctx.fillRect(0,0,w,h);
     ctx.globalCompositeOperation = "source-over";
   }
 
   function drawGrid(){
-    // subtle moving grid (diagonal + horizontal)
-    ctx.save();
     const spacing = 40 * DPR;
     const offset = (t * 0.6) % spacing;
 
-    // diagonal cyan lines
+    // diagonal cyan
     ctx.strokeStyle = "rgba(0,229,255,0.08)";
     ctx.lineWidth = 1 * DPR;
-    for (let x = -w; x < w * 2; x += spacing){
+    for (let x = -w; x < w*2; x += spacing){
       ctx.beginPath();
       ctx.moveTo(x + offset, 0);
       ctx.lineTo(x + offset + h * 0.2, h);
       ctx.stroke();
     }
 
-    // horizontal green lines
+    // horizontal green
     ctx.strokeStyle = "rgba(57,255,20,0.06)";
     for (let y = 0; y < h; y += spacing){
       ctx.beginPath();
@@ -186,15 +176,11 @@ console.log("[cyber-bg] running");
       ctx.lineTo(w, y + offset);
       ctx.stroke();
     }
-
-    ctx.restore();
   }
 
   function drawParticles(){
-    // neon data streaks (green + cyan)
     ctx.save();
     ctx.globalCompositeOperation = "lighter";
-
     for (const p of particles){
       p.x += p.vx; p.y += p.vy;
       if (p.x - p.l > w) { p.x = -10; p.y = Math.random() * h; }
@@ -218,12 +204,10 @@ console.log("[cyber-bg] running");
       ctx.lineTo(p.x - p.l * 0.6, p.y + 1);
       ctx.stroke();
     }
-
     ctx.restore();
   }
 
   function drawScanlines(){
-    // faint CRT scanlines
     const lineH = 3 * DPR;
     ctx.save();
     ctx.globalAlpha = 0.06;
@@ -234,18 +218,18 @@ console.log("[cyber-bg] running");
     ctx.restore();
   }
 
-  function tick(){
+  function loop(){
     t += 1;
-    ctx.clearRect(0, 0, w, h);
+    ctx.clearRect(0,0,w,h);
     drawBackground();
     drawGrid();
     drawParticles();
     drawScanlines();
-    requestAnimationFrame(tick);
+    requestAnimationFrame(loop);
   }
 
   resize();
-  tick();
+  loop();
   window.addEventListener("resize", resize);
 })();
 // ---------- Animated counters for stat boxes ----------
