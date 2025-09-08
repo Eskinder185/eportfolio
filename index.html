@@ -37,29 +37,56 @@
       <!-- animated background -->
       <canvas id="bg-stars" class="bg-canvas" aria-hidden="true"></canvas>
 
-      <div class="container hero-inner">
-        <p class="eyebrow">👾 Welcome to My Tech Universe</p>
-        <h1 class="headline glow">
-          I’m <span class="accent">Eskinder</span> — part cloud engineer, part security geek, part AI explorer.
-        </h1>
-        <p class="lead">
-          I design <span class="accent-underline">secure AWS pipelines</span>, hack on <span class="accent-underline">generative &amp; agent AI</span>,
-          and turn bold ideas into working code. This is my <strong>player’s hub</strong> — pick a project and hit <em>start</em>.
-        </p>
-        <div class="cta">
-          <a class="btn" href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" target="_blank" rel="noopener">📄 View My Resume</a>
-          <a class="btn ghost" href="#projects">View Projects</a>
-        </div>
+      <div class="container hero-inner hero-grid">
+  <!-- Avatar -->
+  <div class="avatar-wrap" aria-hidden="false">
+    <!-- Use data-src for lazy load; JS will swap to src -->
+    <img class="avatar" data-src="assets/eskinder.jpg" alt="Photo of Eskinder Kassahun" width="400" height="400">
+  </div>
 
-        <div class="typewriter" aria-live="polite">
-          <span id="typewriter-text" data-lines='[
-            "Initializing…",
-            "Provisioning VPC, subnets, and IAM…",
-            "Deploying Lambdas…",
-            "Securing endpoints…",
-            "Load complete. Ready to explore!"
-          ]'></span>
-        </div>
+  <!-- Headline + intro -->
+  <div>
+    <p class="eyebrow">👾 Welcome to My Tech Universe</p>
+    <h1 class="headline glow">
+      I’m <span class="accent">Eskinder</span> — part cloud engineer, part security geek, part AI explorer.
+    </h1>
+    <p class="lead">
+      I design <span class="accent-underline">secure AWS pipelines</span>, hack on <span class="accent-underline">generative &amp; agent AI</span>,
+      and turn bold ideas into working code. This is my <strong>player’s hub</strong> — pick a project and hit <em>start</em>.
+    </p>
+
+    <!-- Two stat cards -->
+    <div class="stats-row">
+      <article class="stat-card tilt">
+        <div class="stat-kicker">Experience</div>
+        <div class="stat-value" data-count="4" data-suffix="+">0</div>
+        <div class="stat-sub">Cloud • Security • AI — building, shipping, and learning.</div>
+      </article>
+
+      <article class="stat-card tilt">
+        <div class="stat-kicker">Projects Shipped</div>
+        <div class="stat-value" data-count="20" data-suffix="+">0</div>
+        <div class="stat-sub">Production demos, labs, and portfolio apps.</div>
+      </article>
+    </div>
+
+    <div class="cta">
+      <a class="btn" href="https://drive.google.com/file/d/14iL1uNi4vp0GLu-Nkh6jc_7ICK8buyIr/view?usp=drive_link" target="_blank" rel="noopener">📄 View My Resume</a>
+      <a class="btn ghost" href="#projects">View Projects</a>
+    </div>
+
+    <div class="typewriter" aria-live="polite">
+      <span id="typewriter-text" data-lines='[
+        "Initializing…",
+        "Provisioning VPC, subnets, and IAM…",
+        "Deploying Lambdas…",
+        "Securing endpoints…",
+        "Load complete. Ready to explore!"
+      ]'></span>
+    </div>
+  </div>
+</div>
+
       </div>
       <a class="scroll-down" href="#about" aria-label="Scroll to About">▼</a>
     </section>
@@ -102,43 +129,47 @@
       <div class="container">
         <h2 class="section-title pulse">Projects</h2>
 
-        <div class="projects-grid">
-          <!-- Neon Meme Machine -->
-          <article class="card tilt reveal">
-            <h3>Neon Meme Machine</h3>
-            <p>React + JS meme generator that pulls templates from APIs, adds text, and lets users download/share. Deployed-ready on Netlify/GitHub Pages.</p>
-            <div class="chips">
-              <span class="chip">React</span><span class="chip">JavaScript</span><span class="chip">API</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn ghost sm shine" href="https://github.com/Eskinder185/neon-meme-machine" target="_blank" rel="noopener">Source</a>
-            </div>
-          </article>
+       <div class="projects-grid">
+  <!-- Astra Focus (Task Tracker) -->
+  <article class="card tilt reveal">
+    <h3>Astra Focus — Task Tracker</h3>
+    <p>Productivity web app with clean UI for tasks, priorities, and progress. Fast, keyboard-friendly interactions.</p>
+    <div class="chips">
+      <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Vite</span>
+    </div>
+    <div class="card-actions">
+      <a class="btn sm shine" href="https://eskinder185.github.io/tasktracker" target="_blank" rel="noopener">Live</a>
+      <a class="btn ghost sm shine" href="https://github.com/Eskinder185/tasktracker" target="_blank" rel="noopener">Repo</a>
+    </div>
+  </article>
 
-          <!-- Task Tracker -->
-          <article class="card tilt reveal">
-            <h3>Task Tracker</h3>
-            <p>Simple, fast task tracker that demonstrates CRUD, clean component state, and local persistence. Great for showcasing JS fundamentals and UX polish.</p>
-            <div class="chips">
-              <span class="chip">JavaScript</span><span class="chip">HTML</span><span class="chip">CSS</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn ghost sm shine" href="https://github.com/Eskinder185/tasktracker" target="_blank" rel="noopener">Source</a>
-            </div>
-          </article>
+  <!-- Roadmap to Role -->
+  <article class="card tilt reveal">
+    <h3>Roadmap to Role — Career Toolkit</h3>
+    <p>Interactive tools for resumes, interview prep, and portfolio links to accelerate job readiness.</p>
+    <div class="chips">
+      <span class="chip">React Router</span><span class="chip">SPA</span><span class="chip">GitHub Pages</span>
+    </div>
+    <div class="card-actions">
+      <a class="btn sm shine" href="https://eskinder185.github.io/professionaldev/" target="_blank" rel="noopener">Live</a>
+      <a class="btn ghost sm shine" href="https://github.com/Eskinder185/professionaldev" target="_blank" rel="noopener">Repo</a>
+    </div>
+  </article>
 
-          <!-- Jeopardy / Trivia Game -->
-          <article class="card tilt reveal">
-            <h3>Jeopardy Trivia Game</h3>
-            <p>Jeopardy-style trivia app with timer, scoring, and answer validation. Designed to add categories and expand game modes.</p>
-            <div class="chips">
-              <span class="chip">JavaScript</span><span class="chip">Game</span>
-            </div>
-            <div class="card-actions">
-              <a class="btn ghost sm shine" href="https://github.com/Eskinder185/jeopardy-trivia-game" target="_blank" rel="noopener">Source</a>
-            </div>
-          </article>
-        </div>
+  <!-- FactForge -->
+  <article class="card tilt reveal">
+    <h3>FactForge — Fact Checking App</h3>
+    <p>Lightweight fact-checking UX with clean layout and fast page loads for sharing results.</p>
+    <div class="chips">
+      <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+    </div>
+    <div class="card-actions">
+      <a class="btn sm shine" href="https://eskinder185.github.io/factforge/" target="_blank" rel="noopener">Live</a>
+      <a class="btn ghost sm shine" href="https://github.com/Eskinder185/factforge" target="_blank" rel="noopener">Repo</a>
+    </div>
+  </article>
+</div>
+
       </div>
     </section>
 
@@ -213,7 +244,7 @@
     </div>
   </footer>
 
-  <script src="main.js"></script>
+<script src="main.js?v=cyber3"></script>
 </body>
 </html>
 
