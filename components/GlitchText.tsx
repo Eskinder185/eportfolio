@@ -20,7 +20,7 @@ export function GlitchText({ text, className = '' }: GlitchTextProps) {
         const glitchInterval = setInterval(() => {
           const glitchedText = text
             .split('')
-            .map((char, index) => {
+            .map((char) => {
               if (Math.random() < 0.3) {
                 return glitchChars[Math.floor(Math.random() * glitchChars.length)];
               }
