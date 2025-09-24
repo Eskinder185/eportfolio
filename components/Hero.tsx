@@ -29,7 +29,7 @@ export function Hero() {
               </motion.div>
               
               <motion.img
-                src="/assets/Eskinder.png"
+                src="./assets/Eskinder.png"
                 alt="Eskinder Kassahun"
                 className="relative w-80 h-80 rounded-full object-cover border-4 border-black"
                 onLoad={() => setAvatarLoaded(true)}
