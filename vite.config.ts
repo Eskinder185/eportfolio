@@ -2,6 +2,6 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  base: '/eportfolio/',     // IMPORTANT for GitHub Pages subdirectory
+  base: '/',   // root, since you’re using eskinder.dev directly
   plugins: [react()],
 })
